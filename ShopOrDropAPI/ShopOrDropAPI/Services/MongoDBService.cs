@@ -12,6 +12,7 @@ namespace ShopOrDropAPI.Services
 
         public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
         {
+
             MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
             IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
             _purchasesCollection = database.GetCollection<PurchaseItem>(mongoDBSettings.Value.CollectionNamePurchases);
@@ -39,13 +40,11 @@ namespace ShopOrDropAPI.Services
         }
 
         public async Task CreateAsyncUser(UserInfo userInfo)
-        {   
+        {
+
             // Create a new user
             await _usersCollection.InsertOneAsync(userInfo);
         }
-
-
-
 
     }
 }

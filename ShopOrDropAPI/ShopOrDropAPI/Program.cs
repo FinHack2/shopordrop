@@ -1,6 +1,13 @@
-var builder = WebApplication.CreateBuilder(args);
+using ShopOrDropAPI.Models;
+using ShopOrDropAPI.Services;
 
 // Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
+
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<MongoDBService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
