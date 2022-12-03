@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 
+using ShopOrDropApp.Services;
+using ShopOrDropApp.Views;
+
 namespace ShopOrDropApp;
 
 public static class MauiProgram
@@ -19,6 +22,13 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+        builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
+        builder.Services.AddSingleton<IRestService, RestService>();
+        builder.Services.AddSingleton<IShopOrDropService, ShopOrDropService>();
+
+        builder.Services.AddSingleton<PurchaseListPage>();
+        builder.Services.AddTransient<PurchaseItemPage>();
+
+        return builder.Build();
 	}
 }

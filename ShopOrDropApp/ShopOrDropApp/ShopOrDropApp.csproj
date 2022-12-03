@@ -52,4 +52,13 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\PurchaseItemPage.xaml.cs">
+	    <DependentUpon>PurchaseItemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PurchaseListPage.xaml.cs">
+	    <DependentUpon>PurchaseListPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
