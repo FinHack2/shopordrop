@@ -21,7 +21,8 @@ namespace ShopOrDropAPI.Services
         }
 
 
-        public async Task<PurchaseItem> GetAsyncPurchase(string itemName, string userId) {
+        public async Task<PurchaseItem> GetPurchaseItem(string itemName, string userId)
+        {
             // Filter by itemName and userId 
             var filter = Builders<PurchaseItem>.Filter.Eq("itemName", itemName) & Builders<PurchaseItem>.Filter.Eq("userId", userId);
             return await _purchasesCollection.FindAsync(filter).Result.FirstOrDefaultAsync();
