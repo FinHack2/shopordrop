@@ -1,10 +1,25 @@
 using ShopOrDropAPI.Models;
 using ShopOrDropAPI.Services;
 
+using MongoDB.Driver;
+using MongoDB.Bson;
+
+// MongoClient client = new MongoClient("mongodb+srv://finhack2:hCN5VDhtPhrIl2oe@cluster0.aelojos.mongodb.net/?retryWrites=true&w=majority");
+
+// var usersCollection = client.GetDatabase("shopordrop").GetCollection<UserInfo>("users");
+// var purchasesCollection = client.GetDatabase("shopordrop").GetCollection<PurchaseItem>("purchases");
+
+
+//List<string> databases = client.ListDatabaseNames().ToList();
+
+//foreach (string database in databases)
+//{
+//    Console.WriteLine(database);
+//}
+
 // Add services to the container.
 var builder = WebApplication.CreateBuilder(args);
-//builder.Logging.ClearProviders();
-//builder.Logging.AddConsole();
+
 
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<MongoDBService>();

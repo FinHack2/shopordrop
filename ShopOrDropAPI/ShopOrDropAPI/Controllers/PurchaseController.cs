@@ -16,16 +16,18 @@ namespace ShopOrDropAPI.Controllers
             _mongoDBService = mongoDBService;
         }
 
+        [ActionName("GetAsyncPurchase")]
         // Filter by itemName and userId 
         [HttpGet("{itemName}/{userId}")]
         public async Task<PurchaseItem> GetPurchaseItem(string itemName, string userId) {
             return await _mongoDBService.GetAsyncPurchase(itemName, userId);
         }
 
+        [ActionName("CreateAsyncPurchase")]
         [HttpPost]
-        public async Task<IActionResult> PostPurchaseItem([FromBody] PurchaseItem purchaseItem) {
+        public async Task<PurchaseItem> PostPurchaseItem([FromBody] PurchaseItem purchaseItem) {
             await _mongoDBService.CreateAsyncPurchase(purchaseItem);
-            return CreatedAtAction(nameof(GetPurchaseItem), new { id = purchaseItem.ID }, purchaseItem);
+            return purchaseItem;
         }
 
     }

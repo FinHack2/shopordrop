@@ -10,6 +10,7 @@ namespace ShopOrDropAPI.Services
         private readonly IMongoCollection<PurchaseItem> _purchasesCollection;
         private readonly IMongoCollection<UserInfo> _usersCollection;
 
+
         public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
         {
 

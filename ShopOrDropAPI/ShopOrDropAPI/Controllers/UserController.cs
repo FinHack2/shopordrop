@@ -16,7 +16,6 @@ namespace ShopOrDropAPI.Controllers
             _mongoDBService = mongoDBService;
         }
 
-
         [HttpGet("{email}")]
         public async Task<UserInfo> GetUserInfo(string email) 
         {
@@ -24,11 +23,13 @@ namespace ShopOrDropAPI.Controllers
             return await _mongoDBService.GetUserByEmail(email);
         }
 
+        [ActionName("CreateAsyncUser")]
         [HttpPost]
-        public async Task<IActionResult> PostUserInfo([FromBody] UserInfo userInfo)
+        public async Task<UserInfo> PostUserInfo([FromBody] UserInfo userInfo)
         {
             await _mongoDBService.CreateAsyncUser(userInfo);
-            return CreatedAtAction(nameof(GetUserInfo), new { id = userInfo.ID }, userInfo);
+
+            return userInfo;
         }
 
     }

@@ -14,6 +14,10 @@ namespace ShopOrDropAPI.Models
         [JsonPropertyName("name")]
         public string Name { get; set; } = null!;
 
+        [BsonElement("email")]
+        [JsonPropertyName("email")]
+        public string Email { get; set; } = null!;
+
         [BsonElement("passwordHash")]
         [JsonPropertyName("passwordHash")]
         public string PasswordHash { get; set; } = null!;
