@@ -18,8 +18,8 @@ namespace ShopOrDropAPI.Models
         [JsonPropertyName("userId")]
         public string UserID { get; set; } = null!;
 
-        [BsonElement("userId")]
-        [JsonPropertyName("userId")]
+        [BsonElement("category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; } = null!;
 
         [BsonElement("itemCost")]

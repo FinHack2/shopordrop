@@ -10,8 +10,10 @@ namespace ShopOrDropAPI.Services
         private readonly IMongoCollection<PurchaseItem> _purchasesCollection;
         private readonly IMongoCollection<UserInfo> _usersCollection;
 
+
         public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
         {
+
             MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
             IMongoDatabase database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
             _purchasesCollection = database.GetCollection<PurchaseItem>(mongoDBSettings.Value.CollectionNamePurchases);
@@ -19,7 +21,8 @@ namespace ShopOrDropAPI.Services
         }
 
 
-        public async Task<PurchaseItem> GetAsyncPurchase(string itemName, string userId) {
+        public async Task<PurchaseItem> GetPurchaseItem(string itemName, string userId)
+        {
             // Filter by itemName and userId 
             var filter = Builders<PurchaseItem>.Filter.Eq("itemName", itemName) & Builders<PurchaseItem>.Filter.Eq("userId", userId);
             return await _purchasesCollection.FindAsync(filter).Result.FirstOrDefaultAsync();
@@ -39,13 +42,11 @@ namespace ShopOrDropAPI.Services
         }
 
         public async Task CreateAsyncUser(UserInfo userInfo)
-        {   
+        {
+
             // Create a new user
             await _usersCollection.InsertOneAsync(userInfo);
         }
-
-
-
 
     }
 }
