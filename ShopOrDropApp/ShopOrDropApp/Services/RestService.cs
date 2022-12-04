@@ -121,11 +121,11 @@ namespace ShopOrDropApp.Services
 
         public async Task<float> GetPredictionAsync(PurchaseItem item)
         {
-            // https://localhost:7237/api/Purchase/add with POST
-            Uri uri = new Uri(string.Format(Constants.RestUrl, "predict"));
+            // https://localhost:7237/predict with POST
+            Uri uri = new Uri("https://localhost:7237/predict");
             //Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
-            Debug.WriteLine(@"\t Uri {0}", string.Format(Constants.RestUrl, "predict"));
+            Debug.WriteLine(@"\t Uri {0}", "https://localhost:7237/predict");
             try
             {
 
@@ -135,7 +135,7 @@ namespace ShopOrDropApp.Services
                     category = item.Category,
                     itemCost = item.ItemCost,
                     dayOfWeek = item.DayOfWeek,
-                    online = item.OnlinePurchase ? 1: 0,
+                    online = item.OnlinePurchase ? 1 : 0,
                 });
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -157,7 +157,8 @@ namespace ShopOrDropApp.Services
                     var contentString = await response.Content.ReadAsStringAsync();
                     var Result = JsonSerializer.Deserialize<PredictionResult>(contentString, _serializerOptions);
 
-                    Debug.WriteLine("Result", Result);
+                    Debug.WriteLine("Result", Result.ToString());
+                    Debug.WriteLine("Result.Score", Result.Score);
 
                     return Result.Score;
                 }
