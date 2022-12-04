@@ -45,7 +45,7 @@ namespace ShopOrDropApp.Views
             var temp = await _shopOrDropService.GetPrediction(PurchaseItem);
             Debug.WriteLine("Final {0}", temp);
             satisfactionValue = temp;
-
+            PredictTxt.Text = $"Predicted Value: {temp}";
             PurchaseItem.Satisfaction = temp;
 
         }

@@ -70,8 +70,11 @@
         <Label Text="OnlinePuchase" />
         <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePurchase}" />
         <Label Text="Satisfaction" />
-        <Label Text="{Binding Path=satisfactionValue}" />
-        <Button Text="Predict" 
+        <Label x:Name="PredictTxt" Text="Predicted Value: " />
+        
+        <Button
+            x:Name="PredictBtn"
+            Text="Predict" 
                 Clicked="OnPredictButtonClicked" />
         <!--<Button Text="Delete"
                 Clicked="OnPredictButtonClicked" />-->
