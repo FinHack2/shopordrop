@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
 
 using ShopOrDropApp.Services;
 using ShopOrDropApp.Views;
@@ -18,8 +19,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+        builder.UseMauiApp<App>().UseMauiCommunityToolkit();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
         builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();

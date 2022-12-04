@@ -15,10 +15,20 @@ namespace ShopOrDropApp.Views
             get => _purchaseItem;
             set
             {
+                //_isNewItem = IsNewItem(value);
                 _purchaseItem = value;
                 OnPropertyChanged();
             }
         }
+
+        //bool IsNewItem(PurchaseItem purchaseItem)
+        //{
+        //    if (string.IsNullOrWhiteSpace(purchaseItem.ItemName) 
+        //        && string.IsNullOrWhiteSpace(purchaseItem.Category)
+        //        && purchaseItem.ID == "")
+        //        return true;
+        //    return false;
+        //}
 
         public PurchaseItemPage(IShopOrDropService service)
         {
@@ -29,7 +39,7 @@ namespace ShopOrDropApp.Views
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-
+            //await _shopOrDropService.SaveTaskAsync(PurchaseItem, _isNewItem);
             await _shopOrDropService.SaveTaskAsync(PurchaseItem);
             await Shell.Current.GoToAsync("..");
         }
@@ -39,6 +49,7 @@ namespace ShopOrDropApp.Views
         //    await _shopOrDropService.DeleteTaskAsync(PurchaseItem);
         //    await Shell.Current.GoToAsync("..");
         //}
+
 
         async void OnCancelButtonClicked(object sender, EventArgs e)
         {
