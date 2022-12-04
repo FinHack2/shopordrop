@@ -21,9 +21,9 @@ namespace ShopOrDropApp.Services
             return _restService.SavePurchaseItemAsync(item, isNewItem);
         }
 
-        public Task DeleteTaskAsync(PurchaseItem item)
-        {
-            return _restService.DeletePurchaseItemAsync(item.ID);
-        }
+        //public Task DeleteTaskAsync(PurchaseItem item)
+        //{
+        //    return _restService.DeletePurchaseItemAsync(item.ID);
+        //}
     }
 }

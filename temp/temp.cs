@@ -1,4 +1,4 @@
-﻿using ShopOrDropApp.Models;
+using ShopOrDropApp.Models;
 using ShopOrDropApp.Services;
 using System.Diagnostics;
 
@@ -24,7 +24,8 @@ namespace ShopOrDropApp.Views
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(PurchaseItem), new PurchaseItem { ID = Guid.NewGuid().ToString() } }
+                //{ nameof(PurchaseItem), new PurchaseItem { ID = Guid.NewGuid().ToString() } }
+                { nameof(PurchaseItem), new PurchaseItem {  } }
             };
             await Shell.Current.GoToAsync(nameof(PurchaseItemPage), navigationParameter);
         }
@@ -33,10 +34,9 @@ namespace ShopOrDropApp.Views
         {
             var purchaseItem = e.CurrentSelection.FirstOrDefault() as PurchaseItem;
             Debug.WriteLine(@"\Selection:" + purchaseItem.ItemName);
-
             var navigationParameter = new Dictionary<string, object>
             {
-                { nameof(PurchaseItem), e.CurrentSelection.FirstOrDefault() as PurchaseItem }
+                { purchaseItem.ItemName, e.CurrentSelection.FirstOrDefault() as PurchaseItem }
             };
             await Shell.Current.GoToAsync(nameof(PurchaseItemPage), navigationParameter);
         }

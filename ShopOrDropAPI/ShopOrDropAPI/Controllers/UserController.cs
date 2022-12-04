@@ -5,7 +5,7 @@ using ShopOrDropAPI.Models;
 
 namespace ShopOrDropAPI.Controllers
 {
-    [Controller]
+    [ApiController]
     [Route("api/[controller]")]
     public class UserController : Controller
     {
@@ -29,7 +29,7 @@ namespace ShopOrDropAPI.Controllers
         }
 
         [ActionName("CreateAsyncUser")]
-        [HttpPost]
+        [HttpPost("add/")]
         public async Task<UserInfo> PostUserInfo([FromBody] UserInfo userInfo)
         {
             await _mongoDBService.CreateAsyncUser(userInfo);

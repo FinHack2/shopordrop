@@ -20,6 +20,12 @@ namespace ShopOrDropAPI.Services
             _usersCollection = database.GetCollection<UserInfo>(mongoDBSettings.Value.CollectionNameUsers);
         }
 
+        public async Task<List<PurchaseItem>> GetManyPurchaseItem(string userId)
+        {
+            // Filter by userId 
+            var filter = Builders<PurchaseItem>.Filter.Eq("userId", userId);
+            return await _purchasesCollection.Find(filter).ToListAsync();
+        }
 
         public async Task<PurchaseItem> GetPurchaseItem(string itemName, string userId)
         {

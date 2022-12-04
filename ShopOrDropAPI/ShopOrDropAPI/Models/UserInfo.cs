@@ -32,7 +32,7 @@ namespace ShopOrDropAPI.Models
 
         [BsonElement("totalExpenditure")]
         [JsonPropertyName("totalExpenditure")]
-        public string TotalExpenditure { get; set; } = null!;
+        public float TotalExpenditure { get; set; } = 0!;
 
     }
 

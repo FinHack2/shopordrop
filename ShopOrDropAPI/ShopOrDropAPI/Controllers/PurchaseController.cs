@@ -5,7 +5,7 @@ using ShopOrDropAPI.Models;
 
 namespace ShopOrDropAPI.Controllers
 {
-    [Controller]
+    [ApiController]
     [Route("api/[controller]")]
     public class PurchaseController : Controller
     {
@@ -14,6 +14,11 @@ namespace ShopOrDropAPI.Controllers
         public class itemSearchQuery
         {
             public string itemName { get; set; } = null!;
+            public string userId { get; set; } = null!;
+        }
+
+        public class itemManySearchQuery
+        {
             public string userId { get; set; } = null!;
         }
 
@@ -29,8 +34,15 @@ namespace ShopOrDropAPI.Controllers
             return await _mongoDBService.GetPurchaseItem(query.itemName, query.userId);
         }
 
+        // Filter by itemName and userId 
+        [HttpPost("searchMany/")]
+        public async Task<List<PurchaseItem>> GetManyPurchaseItem([FromBody] itemManySearchQuery query)
+        {
+            return await _mongoDBService.GetManyPurchaseItem(query.userId);
+        }
+
         [ActionName("CreateAsyncPurchase")]
-        [HttpPost]
+        [HttpPost("add/")]
         public async Task<PurchaseItem> PostPurchaseItem([FromBody] PurchaseItem purchaseItem) {
             await _mongoDBService.CreateAsyncPurchase(purchaseItem);
             return purchaseItem;
