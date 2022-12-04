@@ -9,5 +9,6 @@
         public float ItemCost { get; set; }
         public string DayOfWeek { get; set; }
         public bool OnlinePurchase { get; set; }
+        public float Satisfaction { get; set; }
     }
 }

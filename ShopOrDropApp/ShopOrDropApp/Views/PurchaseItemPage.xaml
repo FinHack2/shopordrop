@@ -68,6 +68,10 @@
         </Picker>
         <Label Text="OnlinePuchase" />
         <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePurchase}" />
+        <Label Text="Satisfaction" />
+        <Slider Minimum="0"
+                Maximum="10" 
+                Value="{Binding Path=PurchaseItem.Satisfaction}"/>
 		<Button Text="Save" 
                 Clicked="OnSaveButtonClicked" />
 		<!--<Button Text="Delete"
