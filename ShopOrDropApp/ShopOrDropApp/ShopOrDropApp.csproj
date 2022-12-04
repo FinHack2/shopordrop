@@ -49,16 +49,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PurchaseItemPage.xaml.cs">
 	    <DependentUpon>PurchaseItemPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\PurchaseListPage.xaml.cs">
 	    <DependentUpon>PurchaseListPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

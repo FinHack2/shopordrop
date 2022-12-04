@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopOrDropApp.Views.LoginPage"
+             Title="Login">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Vertical">
+            <Frame BackgroundColor="Transparent">
+                <StackLayout>
+                    <Image Source="http://cdn.onlinewebfonts.com/svg/img_329115.png" Aspect="AspectFill" Margin="0"/>
+                    <Entry Text="{Binding Email}" Placeholder="Email" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry Text="{Binding Password}" Placeholder="Password" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Entry>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="False"/>
+                        <Label Text="Remember Me" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <Button Text="Login" WidthRequest="100" Padding="0" Margin="0,10,0,0" CornerRadius="30" Command="{Binding LoginCommand}"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+    </Grid>
+
+
+</ContentPage>
