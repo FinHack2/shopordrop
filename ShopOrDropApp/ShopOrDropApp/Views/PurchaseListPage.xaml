@@ -4,6 +4,13 @@
              x:Class="ShopOrDropApp.Views.PurchaseListPage"
              Title="ShopOrDrop">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Predict Page" Clicked="OnPredictPageClicked">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android, WinUI" Value="predict.png" />
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
         <ToolbarItem Text="Add Item" Clicked="OnAddItemClicked">
             <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="ImageSource">

@@ -12,6 +12,11 @@ namespace ShopOrDropApp.Services
             _restService = service;
         }
 
+        public Task<float> GetPrediction(PurchaseItem item)
+        {
+            return _restService.GetPredictionAsync(item);
+        }
+
         public Task<List<PurchaseItem>> GetTasksAsync()
         {
             return _restService.RefreshDataAsync();
@@ -24,6 +29,7 @@ namespace ShopOrDropApp.Services
             //return _restService.SavePurchaseItemAsync(item, isNewItem);
             return _restService.SavePurchaseItemAsync(item);
         }
+
 
         //public Task DeleteTaskAsync(PurchaseItem item)
         //{

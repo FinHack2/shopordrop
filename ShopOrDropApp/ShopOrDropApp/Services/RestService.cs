@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+using ShopOrDropAPI.Models;
 using ShopOrDropApp.Models;
 
 namespace ShopOrDropApp.Services
@@ -47,6 +48,7 @@ namespace ShopOrDropApp.Services
                     userId = "638b0176ec0cf7776b91d3f7"
                 });
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Debug.WriteLine(@"\t Content {0}", json.ToString());
 
                 //// add headers
                 //_client.DefaultRequestHeaders.Add("content-type", "application/json");
@@ -116,6 +118,64 @@ namespace ShopOrDropApp.Services
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
         }
+
+        public async Task<float> GetPredictionAsync(PurchaseItem item)
+        {
+            // https://localhost:7237/api/Purchase/add with POST
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "predict"));
+            //Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            Debug.WriteLine(@"\t Uri {0}", string.Format(Constants.RestUrl, "predict"));
+            try
+            {
+
+                //string json = JsonSerializer.Serialize<PurchaseItem>(item, _serializerOptions);
+                var json = JsonSerializer.Serialize(new
+                {
+                    category = item.Category,
+                    itemCost = item.ItemCost,
+                    dayOfWeek = item.DayOfWeek,
+                    online = item.OnlinePurchase ? 1: 0,
+                });
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                Debug.WriteLine(@"\t Content {0}", json.ToString());
+
+                //// add headers
+                //content.Headers.Add("content-type", "application/json");
+
+                HttpResponseMessage response = null;
+                response = await _client.PostAsync(uri, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine(@"\tPurchaseItem successfully saved.");
+
+                    if (response.IsSuccessStatusCode)
+                        Debug.WriteLine(@"\tRetrieved purchase items successfully.");
+
+                    var contentString = await response.Content.ReadAsStringAsync();
+                    var Result = JsonSerializer.Deserialize<PredictionResult>(contentString, _serializerOptions);
+
+                    Debug.WriteLine("Result", Result);
+
+                    return Result.Score;
+                }
+                else
+                {
+                    Debug.WriteLine(@"\t ERROR {0}", response.ToString());
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return 11;
+        }
+        
 
         //public async Task DeletePurchaseItemAsync(string id)
         //{

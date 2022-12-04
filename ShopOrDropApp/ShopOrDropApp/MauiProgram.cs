@@ -31,6 +31,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<PurchaseListPage>();
         builder.Services.AddTransient<PurchaseItemPage>();
+        builder.Services.AddTransient<SatisfactionPredPage>();
 
         return builder.Build();
 	}

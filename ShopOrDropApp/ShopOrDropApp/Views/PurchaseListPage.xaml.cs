@@ -29,6 +29,15 @@ namespace ShopOrDropApp.Views
             await Shell.Current.GoToAsync(nameof(PurchaseItemPage), navigationParameter);
         }
 
+        async void OnPredictPageClicked(object sender, EventArgs e)
+        {
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { nameof(PurchaseItem), new PurchaseItem { ID = Guid.NewGuid().ToString() } }
+            };
+            await Shell.Current.GoToAsync(nameof(SatisfactionPredPage), navigationParameter);
+        }
+
         async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var purchaseItem = e.CurrentSelection.FirstOrDefault() as PurchaseItem;

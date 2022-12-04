@@ -8,7 +8,7 @@ namespace ShopOrDropApp.Views
     {
         IShopOrDropService _shopOrDropService;
         PurchaseItem _purchaseItem;
-        bool _isNewItem;
+        //bool _isNewItem;
 
         public PurchaseItem PurchaseItem
         {
