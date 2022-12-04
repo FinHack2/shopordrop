@@ -20,7 +20,7 @@ namespace ShopOrDropAPI.Models
         public int OnlinePuchase { get; set; } = 0!; 
 
         [JsonPropertyName("features")]
-        public List<int> Features { get; set; } = new List<int>();
+        public List<float> Features { get; set; } = new List<float>();
 
 
         [JsonPropertyName("score")]

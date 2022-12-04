@@ -9,6 +9,7 @@ namespace ShopOrDropApp.Views
     {
         IShopOrDropService _shopOrDropService;
         PurchaseItem _purchaseItem;
+        public float satisfactionValue = 0f;
 
         public PurchaseItem PurchaseItem
         {
@@ -41,7 +42,11 @@ namespace ShopOrDropApp.Views
 
         async void OnPredictButtonClicked(object sender, EventArgs e)
         {
-            _purchaseItem.Satisfaction = await _shopOrDropService.GetPrediction(PurchaseItem);
+            var temp = await _shopOrDropService.GetPrediction(PurchaseItem);
+            Debug.WriteLine("Final {0}", temp);
+            satisfactionValue = temp;
+
+            PurchaseItem.Satisfaction = temp;
 
         }
     }

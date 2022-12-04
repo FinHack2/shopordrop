@@ -70,7 +70,7 @@
         <Label Text="OnlinePuchase" />
         <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePurchase}" />
         <Label Text="Satisfaction" />
-        <Label Text="{Binding PurchaseItem.Satisfaction}" />
+        <Label Text="{Binding Path=satisfactionValue}" />
         <Button Text="Predict" 
                 Clicked="OnPredictButtonClicked" />
         <!--<Button Text="Delete"

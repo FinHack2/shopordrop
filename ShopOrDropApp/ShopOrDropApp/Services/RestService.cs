@@ -13,6 +13,7 @@ namespace ShopOrDropApp.Services
         IHttpsClientHandlerService _httpsClientHandlerService;
 
         public List<PurchaseItem> Items { get; private set; }
+        public PredictionResult JsonResult { get; private set; }
 
         public RestService(IHttpsClientHandlerService service)
         {
@@ -61,7 +62,7 @@ namespace ShopOrDropApp.Services
 
                     var contentString = await response.Content.ReadAsStringAsync();
                     Items = JsonSerializer.Deserialize<List<PurchaseItem>>(contentString, _serializerOptions);
-
+                    
             }
             catch (Exception ex)
             {
@@ -121,6 +122,7 @@ namespace ShopOrDropApp.Services
 
         public async Task<float> GetPredictionAsync(PurchaseItem item)
         {
+            JsonResult = new PredictionResult { };
             // https://localhost:7237/predict with POST
             Uri uri = new Uri("https://localhost:7237/predict");
             //Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
@@ -149,18 +151,23 @@ namespace ShopOrDropApp.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(@"\tPurchaseItem successfully saved.");
 
                     if (response.IsSuccessStatusCode)
-                        Debug.WriteLine(@"\tRetrieved purchase items successfully.");
+                        Debug.WriteLine(@"\Got prediction sucessfully.");
 
                     var contentString = await response.Content.ReadAsStringAsync();
-                    var Result = JsonSerializer.Deserialize<PredictionResult>(contentString, _serializerOptions);
+                    Debug.WriteLine("Content String: {0}", contentString);
 
-                    Debug.WriteLine("Result", Result.ToString());
-                    Debug.WriteLine("Result.Score", Result.Score);
 
-                    return Result.Score;
+                    JsonResult = JsonSerializer.Deserialize<PredictionResult>(contentString);
+
+                    Debug.WriteLine("Result {0}", JsonResult.GetType());
+                    Debug.WriteLine("Result.Score {0}", JsonResult.Score);
+                    Debug.WriteLine("Result.Score {0}", JsonResult.Score.GetType());
+                    var temp = (float)JsonResult.Score;
+                    Debug.WriteLine("Result.Score {0}", temp.GetType());
+
+                    return (float)JsonResult.Score;
                 }
                 else
                 {
