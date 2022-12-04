@@ -4,12 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ShopOrDropApp"
-    xmlns:views="clr-namespace:ShopOrDropApp.Views"
-    Shell.FlyoutBehavior="Disabled">
-
+    xmlns:views="clr-namespace:ShopOrDropApp.Views">
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:PurchaseListPage}"
-        Route="MainPage" />
-
+        Title="Add an item"
+        ContentTemplate="{DataTemplate views:PurchaseItemPage}"/>
+    <ShellContent 
+        Title="Purchase List" 
+        ContentTemplate="{DataTemplate views:PurchaseListPage}" />
 </Shell>
