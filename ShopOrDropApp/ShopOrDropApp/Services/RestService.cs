@@ -48,14 +48,14 @@ namespace ShopOrDropApp.Services
                 });
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                // add headers
-                _client.DefaultRequestHeaders.Add("content-type", "application/json");
+                //// add headers
+                //_client.DefaultRequestHeaders.Add("content-type", "application/json");
 
                 HttpResponseMessage response = null;
                 response = await _client.PostAsync(uri, content);
 
                 if (response.IsSuccessStatusCode)
-                    Debug.WriteLine(@"\tPurchaseItem successfully saved.");
+                    Debug.WriteLine(@"\tRetrieved purchase items successfully.");
 
                     var contentString = await response.Content.ReadAsStringAsync();
                     Items = JsonSerializer.Deserialize<List<PurchaseItem>>(contentString, _serializerOptions);
@@ -80,8 +80,8 @@ namespace ShopOrDropApp.Services
                 string json = JsonSerializer.Serialize<PurchaseItem>(item, _serializerOptions);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                // add headers
-                content.Headers.Add("content-type", "application/json");
+                //// add headers
+                //content.Headers.Add("content-type", "application/json");
 
                 HttpResponseMessage response = null;
                 if (isNewItem)

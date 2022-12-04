@@ -18,14 +18,14 @@
         </Style>
     </ContentPage.Resources>
 	<VerticalStackLayout Margin="20">
-		<Label Text="Name" />
-		<Entry Text="{Binding Path=PurchaseItem.Name}" 
+        <Label Text="ItemName" />
+		<Entry Text="{Binding Path=PurchaseItem.ItemName}" 
                Placeholder="Enter item" />
-		<Label Text="Notes" />
-        <Entry Text="{Binding Path=PurchaseItem.Notes}"
+        <Label Text="Category" />
+        <Entry Text="{Binding Path=PurchaseItem.Category}"
                Placeholder="Enter notes" />
-		<Label Text="Done" />
-        <Switch IsToggled="{Binding Path=PurchaseItem.Done}" />
+        <Label Text="OnlinePuchase" />
+        <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePuchase}" />
 		<Button Text="Save" 
                 Clicked="OnSaveButtonClicked" />
 		<!--<Button Text="Delete"
