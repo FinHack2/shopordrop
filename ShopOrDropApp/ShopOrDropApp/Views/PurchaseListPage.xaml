@@ -18,14 +18,58 @@
                     SelectionChanged="OnSelectionChanged">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid Padding="20,0,0,0"
-                      ColumnDefinitions="0.9*, 0.1*">
-                    <Label Text="{Binding ItemName}" 
-                           VerticalTextAlignment="Center" />
-                    <Image Grid.Column="1"
-                           Source="check.png" 
-                           IsVisible="{Binding OnlinePurchase}"
-                           HorizontalOptions="End" />
+                <Grid Padding="10,0,10,0"
+                      
+                      >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="2" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <BoxView Grid.Column="0"
+                             Color="white" />
+                    <Label Grid.Column="0"
+                           Text="{Binding ItemName}" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="0"
+                             Grid.Row="1"
+                             Color="LightGrey" />
+                    <BoxView Grid.Column="1"
+                             Color="white" />
+                    <Label Grid.Column="1"
+                           Text="{Binding ItemCost }" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="1"
+                             Grid.Row="1"
+                             Color="LightGrey" />
+                    <BoxView Grid.Column="2"
+                             Color="white" />
+                    <Label Grid.Column="2"
+                           Text="{Binding Category}" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="2"
+                             Grid.Row="1"
+                             Color="LightGrey" />
+                    <BoxView Grid.Column="3"
+                             Color="white" />
+                    <Label Grid.Column="3"
+                           IsVisible="{Binding OnlinePurchase}" 
+                           Text="OnlinePurchase"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="3"
+                             Grid.Row="1"
+                             Color="LightGrey" />
+                    
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

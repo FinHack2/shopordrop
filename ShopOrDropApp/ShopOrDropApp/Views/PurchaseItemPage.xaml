@@ -22,8 +22,50 @@
 		<Entry Text="{Binding Path=PurchaseItem.ItemName}" 
                Placeholder="Enter item" />
         <Label Text="Category" />
-        <Entry Text="{Binding Path=PurchaseItem.Category}"
-               Placeholder="Enter notes" />
+        <Picker x:Name="CategoryPicker"
+                SelectedItem="{Binding Path=PurchaseItem.Category}"
+                >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Apparel</x:String>
+                    <x:String>Jewelry</x:String>
+                    <x:String>Household</x:String>
+                    <x:String>Stationery</x:String>
+                    <x:String>Toys</x:String>
+                    <x:String>Virtual Goods</x:String>
+                    <x:String>Electronics</x:String>
+                    <x:String>Furniture</x:String>
+                    <x:String>Food</x:String>
+                    <x:String>Cosmetics</x:String>
+                    <x:String>Books</x:String>
+                    <x:String>Software</x:String>
+                    <x:String>Collectible</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <!--<Entry Text="{Binding Path=PurchaseItem.Category}"
+               Placeholder="Enter notes" />-->
+        <Label Text="Item Cost" />
+        <Entry Text="{Binding Path=PurchaseItem.ItemCost}"
+               Keyboard="Numeric"
+               Placeholder="Enter item cost" >
+        </Entry>
+        <Label Text="Day Of Purchase" />
+        <Picker x:Name="DayPicker"
+                SelectedItem="{Binding Path=PurchaseItem.DayOfWeek}"
+                >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>mon</x:String>
+                    <x:String>tue</x:String>
+                    <x:String>wed</x:String>
+                    <x:String>thu</x:String>
+                    <x:String>fri</x:String>
+                    <x:String>sat</x:String>
+                    <x:String>sun</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
         <Label Text="OnlinePuchase" />
         <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePurchase}" />
 		<Button Text="Save" 

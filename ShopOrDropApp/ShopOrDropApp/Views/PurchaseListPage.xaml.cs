@@ -40,5 +40,17 @@ namespace ShopOrDropApp.Views
             };
             await Shell.Current.GoToAsync(nameof(PurchaseItemPage), navigationParameter);
         }
+
+        async void OnImageButtonClicked(object sender, EventArgs e)
+        {
+            var purchaseItem = (sender as ImageButton).BindingContext as PurchaseItem;
+            Debug.WriteLine(@"\ImageButton:" + purchaseItem.ItemName);
+
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { nameof(PurchaseItem), purchaseItem }
+            };
+            await Shell.Current.GoToAsync(nameof(PurchaseItemPage), navigationParameter);
+        }
     }
 }
