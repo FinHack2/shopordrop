@@ -28,8 +28,8 @@
         <Switch IsToggled="{Binding Path=PurchaseItem.Done}" />
 		<Button Text="Save" 
                 Clicked="OnSaveButtonClicked" />
-		<Button Text="Delete"
-                Clicked="OnDeleteButtonClicked" />
+		<!--<Button Text="Delete"
+                Clicked="OnDeleteButtonClicked" />-->
 		<Button Text="Cancel" 
                 Clicked="OnCancelButtonClicked" />
 	</VerticalStackLayout>

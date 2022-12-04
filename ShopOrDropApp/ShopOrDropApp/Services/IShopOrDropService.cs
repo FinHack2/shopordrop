@@ -6,6 +6,6 @@ namespace ShopOrDropApp.Services
     {
         Task<List<PurchaseItem>> GetTasksAsync();
         Task SaveTaskAsync(PurchaseItem item, bool isNewItem);
-        Task DeleteTaskAsync(PurchaseItem item);
+        //Task DeleteTaskAsync(PurchaseItem item);
     }
 }

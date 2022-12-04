@@ -36,15 +36,30 @@ namespace ShopOrDropApp.Services
         {
             Items = new List<PurchaseItem>();
 
-            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            // https://localhost:7237/api/Purchase/searchMany with POST
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Purchase/searchMany"));
+            // Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
             try
             {
-                HttpResponseMessage response = await _client.GetAsync(uri);
+                // search by user id
+                var json = JsonSerializer.Serialize(new { 
+                    userId = "638b0176ec0cf7776b91d3f7"
+                });
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // add headers
+                _client.DefaultRequestHeaders.Add("content-type", "application/json");
+
+                HttpResponseMessage response = null;
+                response = await _client.PostAsync(uri, content);
+
                 if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    Items = JsonSerializer.Deserialize<List<PurchaseItem>>(content, _serializerOptions);
-                }
+                    Debug.WriteLine(@"\tPurchaseItem successfully saved.");
+
+                    var contentString = await response.Content.ReadAsStringAsync();
+                    Items = JsonSerializer.Deserialize<List<PurchaseItem>>(contentString, _serializerOptions);
+
             }
             catch (Exception ex)
             {
@@ -56,12 +71,17 @@ namespace ShopOrDropApp.Services
 
         public async Task SavePurchaseItemAsync(PurchaseItem item, bool isNewItem = false)
         {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            // https://localhost:7237/api/Purchase/add with POST
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Purchase/add"));
+            //Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
             try
             {
                 string json = JsonSerializer.Serialize<PurchaseItem>(item, _serializerOptions);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // add headers
+                content.Headers.Add("content-type", "application/json");
 
                 HttpResponseMessage response = null;
                 if (isNewItem)
@@ -78,20 +98,20 @@ namespace ShopOrDropApp.Services
             }
         }
 
-        public async Task DeletePurchaseItemAsync(string id)
-        {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, id));
+        //public async Task DeletePurchaseItemAsync(string id)
+        //{
+        //    Uri uri = new Uri(string.Format(Constants.RestUrl, id));
 
-            try
-            {
-                HttpResponseMessage response = await _client.DeleteAsync(uri);
-                if (response.IsSuccessStatusCode)
-                    Debug.WriteLine(@"\tPurchaseItem successfully deleted.");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
-            }
-        }
+        //    try
+        //    {
+        //        HttpResponseMessage response = await _client.DeleteAsync(uri);
+        //        if (response.IsSuccessStatusCode)
+        //            Debug.WriteLine(@"\tPurchaseItem successfully deleted.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(@"\tERROR {0}", ex.Message);
+        //    }
+        //}
     }
 }

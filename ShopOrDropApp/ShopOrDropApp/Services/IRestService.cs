@@ -8,6 +8,6 @@ namespace ShopOrDropApp.Services
 
         Task SavePurchaseItemAsync(PurchaseItem item, bool isNewItem);
 
-        Task DeletePurchaseItemAsync(string id);
+        //Task DeletePurchaseItemAsync(string id);
     }
 }

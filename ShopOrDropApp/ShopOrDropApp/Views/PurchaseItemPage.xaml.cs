@@ -41,11 +41,11 @@ namespace ShopOrDropApp.Views
             await Shell.Current.GoToAsync("..");
         }
 
-        async void OnDeleteButtonClicked(object sender, EventArgs e)
-        {
-            await _shopOrDropService.DeleteTaskAsync(PurchaseItem);
-            await Shell.Current.GoToAsync("..");
-        }
+        //async void OnDeleteButtonClicked(object sender, EventArgs e)
+        //{
+        //    await _shopOrDropService.DeleteTaskAsync(PurchaseItem);
+        //    await Shell.Current.GoToAsync("..");
+        //}
 
         async void OnCancelButtonClicked(object sender, EventArgs e)
         {
