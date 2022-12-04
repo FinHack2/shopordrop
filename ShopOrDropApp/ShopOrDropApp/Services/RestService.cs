@@ -69,26 +69,46 @@ namespace ShopOrDropApp.Services
             return Items;
         }
 
-        public async Task SavePurchaseItemAsync(PurchaseItem item, bool isNewItem = false)
+        public async Task SavePurchaseItemAsync(PurchaseItem item)
         {
             // https://localhost:7237/api/Purchase/add with POST
             Uri uri = new Uri(string.Format(Constants.RestUrl, "Purchase/add"));
             //Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
 
+            Debug.WriteLine(@"\t Uri {0}", string.Format(Constants.RestUrl, "Purchase/add"));
             try
             {
-                string json = JsonSerializer.Serialize<PurchaseItem>(item, _serializerOptions);
+
+                //string json = JsonSerializer.Serialize<PurchaseItem>(item, _serializerOptions);
+                var json = JsonSerializer.Serialize(new
+                {
+                    id = "",
+                    userId = "638b0176ec0cf7776b91d3f7",
+                    itemName = item.ItemName,
+                    category = item.Category,
+                    itemCost = item.ItemCost,
+                    dayOfWeek = "sun",
+                    onlinePurchase = item.OnlinePurchase
+                });
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                Debug.WriteLine(@"\t Content {0}", json.ToString());
 
                 //// add headers
                 //content.Headers.Add("content-type", "application/json");
 
                 HttpResponseMessage response = null;
-                if (isNewItem)
-                    response = await _client.PostAsync(uri, content);
+                response = await _client.PostAsync(uri, content);
 
                 if (response.IsSuccessStatusCode)
+                {
                     Debug.WriteLine(@"\tPurchaseItem successfully saved.");
+                } else
+                {
+                    Debug.WriteLine(@"\t ERROR {0}", response.ToString());
+
+                }
+
             }
             catch (Exception ex)
             {

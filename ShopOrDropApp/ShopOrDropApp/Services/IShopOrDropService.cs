@@ -5,7 +5,7 @@ namespace ShopOrDropApp.Services
     public interface IShopOrDropService
     {
         Task<List<PurchaseItem>> GetTasksAsync();
-        Task SaveTaskAsync(PurchaseItem item, bool isNewItem);
+        Task SaveTaskAsync(PurchaseItem item);
         //Task DeleteTaskAsync(PurchaseItem item);
     }
 }
