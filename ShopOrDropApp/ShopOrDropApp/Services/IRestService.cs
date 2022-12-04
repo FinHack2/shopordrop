@@ -6,7 +6,7 @@ namespace ShopOrDropApp.Services
     {
         Task<List<PurchaseItem>> RefreshDataAsync();
 
-        Task SavePurchaseItemAsync(PurchaseItem item, bool isNewItem);
+        Task SavePurchaseItemAsync(PurchaseItem item);
 
         //Task DeletePurchaseItemAsync(string id);
     }

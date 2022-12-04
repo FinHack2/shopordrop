@@ -25,7 +25,7 @@
         <Entry Text="{Binding Path=PurchaseItem.Category}"
                Placeholder="Enter notes" />
         <Label Text="OnlinePuchase" />
-        <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePuchase}" />
+        <Switch IsToggled="{Binding Path=PurchaseItem.OnlinePurchase}" />
 		<Button Text="Save" 
                 Clicked="OnSaveButtonClicked" />
 		<!--<Button Text="Delete"

@@ -15,7 +15,6 @@ namespace ShopOrDropApp.Views
             get => _purchaseItem;
             set
             {
-                _isNewItem = IsNewItem(value);
                 _purchaseItem = value;
                 OnPropertyChanged();
             }
@@ -28,16 +27,10 @@ namespace ShopOrDropApp.Views
             BindingContext = this;
         }
 
-        bool IsNewItem(PurchaseItem purchaseItem)
-        {
-            if (string.IsNullOrWhiteSpace(purchaseItem.UserID) && string.IsNullOrWhiteSpace(purchaseItem.Category))
-                return true;
-            return false;
-        }
-
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            await _shopOrDropService.SaveTaskAsync(PurchaseItem, _isNewItem);
+
+            await _shopOrDropService.SaveTaskAsync(PurchaseItem);
             await Shell.Current.GoToAsync("..");
         }
 
