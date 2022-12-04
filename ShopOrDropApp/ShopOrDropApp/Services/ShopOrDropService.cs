@@ -1,4 +1,5 @@
 ﻿using ShopOrDropApp.Models;
+using System.Diagnostics;
 
 namespace ShopOrDropApp.Services
 {
@@ -18,6 +19,7 @@ namespace ShopOrDropApp.Services
 
         public Task SaveTaskAsync(PurchaseItem item, bool isNewItem = false)
         {
+            Debug.WriteLine(@"\t Clicked Save Button");
             return _restService.SavePurchaseItemAsync(item, isNewItem);
         }
 

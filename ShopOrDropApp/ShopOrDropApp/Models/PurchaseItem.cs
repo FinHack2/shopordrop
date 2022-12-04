@@ -8,6 +8,6 @@
         public string Category { get; set; }
         public float ItemCost { get; set; }
         public string DayOfWeek { get; set; }
-        public bool OnlinePuchase { get; set; }
+        public bool OnlinePurchase { get; set; }
     }
 }

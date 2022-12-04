@@ -30,13 +30,14 @@ namespace ShopOrDropApp.Views
 
         bool IsNewItem(PurchaseItem purchaseItem)
         {
-            if (string.IsNullOrWhiteSpace(purchaseItem.UserID) && string.IsNullOrWhiteSpace(purchaseItem.Category))
+            if (string.IsNullOrWhiteSpace(purchaseItem.ItemName) && string.IsNullOrWhiteSpace(purchaseItem.Category))
                 return true;
             return false;
         }
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
+
             await _shopOrDropService.SaveTaskAsync(PurchaseItem, _isNewItem);
             await Shell.Current.GoToAsync("..");
         }

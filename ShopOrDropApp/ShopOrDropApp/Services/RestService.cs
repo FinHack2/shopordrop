@@ -86,8 +86,6 @@ namespace ShopOrDropApp.Services
                 HttpResponseMessage response = null;
                 if (isNewItem)
                     response = await _client.PostAsync(uri, content);
-                else
-                    response = await _client.PutAsync(uri, content);
 
                 if (response.IsSuccessStatusCode)
                     Debug.WriteLine(@"\tPurchaseItem successfully saved.");

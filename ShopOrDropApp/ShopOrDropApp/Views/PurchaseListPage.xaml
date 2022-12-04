@@ -24,7 +24,7 @@
                            VerticalTextAlignment="Center" />
                     <Image Grid.Column="1"
                            Source="check.png" 
-                           IsVisible="{Binding OnlinePuchase}"
+                           IsVisible="{Binding OnlinePurchase}"
                            HorizontalOptions="End" />
                 </Grid>
             </DataTemplate>
