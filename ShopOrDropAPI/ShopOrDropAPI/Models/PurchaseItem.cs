@@ -33,5 +33,9 @@ namespace ShopOrDropAPI.Models
         [BsonElement("onlinePurchase")]
         [JsonPropertyName("onlinePurchase")]
         public bool OnlinePuchase { get; set; } = false;
+
+        [BsonElement("satisfaction")]
+        [JsonPropertyName("satisfaction")]
+        public float Satisfaction { get; set; } = 0!;
     } 
 }

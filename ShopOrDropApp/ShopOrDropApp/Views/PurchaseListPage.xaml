@@ -30,6 +30,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
                     <BoxView Grid.Column="0"
@@ -69,7 +70,17 @@
                     <BoxView Grid.Column="3"
                              Grid.Row="1"
                              Color="LightGrey" />
-                    
+
+                    <BoxView Grid.Column="4"
+                             Color="white" />
+                    <Label Grid.Column="4"
+                           Text="{Binding Satisfaction}" 
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" />
+                    <BoxView Grid.Column="4"
+                             Grid.Row="1"
+                             Color="LightGrey" />
+
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>

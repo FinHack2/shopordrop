@@ -87,8 +87,9 @@ namespace ShopOrDropApp.Services
                     itemName = item.ItemName,
                     category = item.Category,
                     itemCost = item.ItemCost,
-                    dayOfWeek = "sun",
-                    onlinePurchase = item.OnlinePurchase
+                    dayOfWeek = item.DayOfWeek,
+                    onlinePurchase = item.OnlinePurchase,
+                    satisfaction = item.Satisfaction
                 });
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
