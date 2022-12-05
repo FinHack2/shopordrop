@@ -6,9 +6,11 @@
     xmlns:local="clr-namespace:ShopOrDropApp"
     xmlns:views="clr-namespace:ShopOrDropApp.Views">
     <ShellContent
-        Title="Add an item"
-        ContentTemplate="{DataTemplate views:PurchaseItemPage}"/>
-    <ShellContent 
-        Title="Purchase List" 
-        ContentTemplate="{DataTemplate views:PurchaseListPage}" />
+        Title="Purchase List"
+        ContentTemplate="{DataTemplate views:PurchaseListPage}"
+        Route="MainPage" />
+    <!--<ShellContent
+        Title="Predict Satisfaction"
+        ContentTemplate="{DataTemplate views:SatisfactionPredPage}"
+        Route="MainPage" />-->
 </Shell>

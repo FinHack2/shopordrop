@@ -8,6 +8,8 @@ namespace ShopOrDropApp.Services
 
         Task SavePurchaseItemAsync(PurchaseItem item);
 
+        Task<float> GetPredictionAsync(PurchaseItem item);
+
         //Task DeletePurchaseItemAsync(string id);
     }
 }
